@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Recicla+</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app-container">
+    <div id="status-bar"></div>
+
+    <!-- Tela Inicial -->
+    <div id="home" class="tela ativa">
+      <div id="logo-container">
+  <img src="img/logo.png" alt="Eco Scan" id="app-logo">
+
+</div>
+<p>Aprenda a descartar seu lixo de forma correta!</p>
+
+      <button onclick="mostrarTela('camera')">Escanear</button>
+      <button onclick="mostrarTela('curiosidades')">Curiosidades</button>
+      <button onclick="mostrarTela('login')">Entrar / Cadastro</button>
+      <button onclick="mostrarTela('busca')">Postos de coleta</button>
+      <button onclick="mostrarTela('recompensas')">Recompensas</button>
+    </div>
+
+    <!-- Tela Login -->
+    <div id="login" class="tela">
+      <h2>🔐 Entrar</h2>
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <input type="email" id="loginEmail" placeholder="Email" required>
+        <input type="password" id="loginSenha" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
+      </form>
+      <p>Não tem conta? <a href="#" onclick="mostrarTela('cadastro')">Cadastrar</a></p>
+      <button onclick="mostrarTela('home')">Voltar</button>
+    </div>
+
+    <!-- Tela Cadastro -->
+    <div id="cadastro" class="tela">
+      <h2>📝 Cadastro</h2>
+      <form id="cadastroForm" onsubmit="handleCadastro(event)">
+        <input type="text" id="nome" placeholder="Nome completo" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="senha" placeholder="Senha" required>
+        <button type="submit">Criar conta</button>
+      </form>
+      <button onclick="mostrarTela('login')">Já tenho conta</button>
+      <button onclick="mostrarTela('home')">Voltar</button>
+    </div>
+
+    <!-- Tela RA -->
+<div id="camera" class="tela">
+  <h2>📸 Escaneando item...</h2>
+
+ <img id="itemImg" src="https://images.unsplash.com/photo-1616118132534-381148898bb4?auto=format&fit=crop&w=400&q=80" 
+     alt="Garrafa PET" class="item-detectado">
+
+  <p>Item detectado: <b id="itemNome">Garrafa PET</b></p>
+  <div class="lixeira amarela">Lixeira correta: AMARELA (Plástico)</div>
+
+  <button onclick="novoItem()">🔄 Novo item</button>
+  <button onclick="simularDescarteCorreto()">Descartei corretamente (ganhar pontos)</button>
+  <button onclick="mostrarTela('busca')">Ver pontos de coleta</button>
+  <button onclick="mostrarTela('home')">Voltar</button>
+</div>
+
+
+    <!-- Tela Mapa / Busca -->
+    <div id="busca" class="tela">
+      <h2>🗺️ Buscar pontos de coleta</h2>
+      <input id="buscarInput" type="text" placeholder="Ex: reciclagem vidro">
+      <button onclick="buscarPontos()">Buscar</button>
+      <div class="map-wrapper">
+        <iframe id="mapIframe" src="https://maps.google.com/maps?q=pontos%20de%20coleta%20reciclagem&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+      </div>
+      <div id="detalhesRota"></div>
+      <button onclick="abrirRota()">Iniciar Navegação</button>
+      <button onclick="mostrarTela('home')">Voltar</button>
+    </div>
+
+    <!-- Tela Recompensas -->
+    <div id="recompensas" class="tela">
+      <h2>🏆 Suas Recompensas</h2>
+      <p id="recompensasTexto">Você acumulou: <b>0 pontos</b></p>
+      <p id="usuarioLogado">Não conectado</p>
+      <button onclick="mostrarTela('home')">Voltar ao início</button>
+      <button onclick="logout()">Sair</button>
+    </div>
+
+    <!-- Tela Curiosidades -->
+    <!-- Tela Curiosidades -->
+<div id="curiosidades" class="tela">
+  <h2>💡 Curiosidades sobre Reciclagem</h2>
+
+  <!-- Imagem informativa -->
+  <img src="img/coleta.png" alt="Informações sobre coleta seletiva" id="img-coleta">
+
+  <!-- Lista de curiosidades -->
+  <ul id="curiosidadesLista"></ul>
+  <button onclick="proximaCuriosidade()">Próxima</button>
+
+  <!-- Seção de textos informativos -->
+  <h3>📘 Textos informativos</h3>
+  <div id="textos-container">
+    <details>
+      <summary>1. Como funciona a coleta seletiva</summary>
+      <p>A coleta seletiva separa os resíduos recicláveis (papel, plástico, vidro e metal) dos orgânicos e rejeitos. Essa separação facilita a reciclagem e reduz o impacto ambiental.</p>
+    </details>
+    <details>
+      <summary>2. O ciclo do papel reciclado</summary>
+      <p>O papel reciclado passa por triagem, lavagem, desintegração e prensagem para se transformar em novas folhas. Esse processo economiza água e energia.</p>
+    </details>
+    <details>
+      <summary>3. Por que o vidro é tão especial</summary>
+      <p>O vidro é 100% reciclável e pode ser reaproveitado infinitas vezes sem perder qualidade. Cada garrafa reciclada economiza energia e evita extração de areia.</p>
+    </details>
+    <details>
+      <summary>4. O destino do lixo eletrônico</summary>
+      <p>Celulares, baterias e computadores devem ser entregues em pontos de coleta específicos. Eles contêm metais tóxicos e precisam de descarte adequado.</p>
+    </details>
+    <details>
+      <summary>5. Como reduzir o lixo em casa</summary>
+      <p>Evite embalagens descartáveis, reutilize potes e recicle sempre que possível. Pequenas atitudes fazem grande diferença na preservação do planeta.</p>
+    </details>
+  </div>
+
+  <!-- Sites úteis -->
+  <h3>🔗 Sites importantes:</h3>
+  <p>
+    <a href="https://cempre.org.br/" target="_blank">CEMPRE – Compromisso Empresarial para Reciclagem</a><br>
+    <a href="https://www.ecycle.com.br/" target="_blank">Ecycle – Guia de Reciclagem</a><br>
+    <a href="https://www.reciclasampa.com.br/" target="_blank">Recicla Sampa</a>
+  </p>
+
+  <button onclick="mostrarTela('home')">Voltar</button>
+</div>
+
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

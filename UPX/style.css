@@ -1,0 +1,202 @@
+/* Corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Mockup do celular */
+#app-container {
+  width: 360px;
+  max-width: 95%;
+  height: 640px;
+  background: #02391e; /* fundo verde escuro */
+  border: 14px solid #054d2e; /* borda verde mais escura */
+  border-radius: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+  color: #f0f4f1; /* cor padrão do texto */
+}
+
+/* Barra superior */
+#status-bar {
+  height: 20px;
+  background: #016837; /* verde vivo */
+}
+
+/* Telas */
+.tela {
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 18px;
+  height: calc(100% - 20px);
+  overflow-y: auto;
+}
+.ativa { display: flex; }
+
+/* Botões */
+button {
+  background: #8cc63f; /* verde limão */
+  border: none;
+  padding: 10px 16px;
+  margin: 8px 0;
+  color: white; /* texto branco */
+  font-size: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 80%;
+  transition: background 0.3s;
+}
+
+button:hover { 
+  background: #7ec01f; /* verde limão mais escuro ao passar o mouse */
+}
+
+
+/* Inputs */
+input[type="text"], input[type="email"], input[type="password"] {
+  width: 80%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #054d2e;
+  background: #f0f4f1; /* fundo claro para contraste */
+  color: #02391e;
+}
+
+/* Lixeira */
+.lixeira {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  background-color: #f1c40f; /* amarelo ecológico */
+  text-align: center;
+}
+.lixeira.amarela { background-color: #f1c40f; } /* Plástico / Metal */
+.lixeira.verde { background-color: #2ecc71; } /* Vidro */
+.lixeira.azul { background-color: #3498db; } /* Papel */
+
+
+/* Imagem do item */
+.item-detectado {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin: 12px 0;
+  border: 2px solid #2ecc71;
+}
+
+/* Mapa */
+.map-wrapper {
+  width: 90%;
+  height: 240px;
+  margin: 8px 0;
+}
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+}
+
+/* Links e títulos */
+h1,h2 { margin: 6px 0; color: #f0f4f1; }
+a { color: #a1e887; text-decoration: none; font-weight: bold; }
+a:hover { color: #c8f1b6; }
+
+/* Logo */
+#logo-container {
+  width: 200px;
+  height: 200px;
+  display: block;
+  overflow: hidden;
+  margin: 16px auto;
+}
+
+#app-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Paleta adicional de cores para ecologia */
+:root {
+  --verde-escuro: #02391e;
+  --verde-medio: #016837;
+  --verde-vibrante: #2ecc71;
+  --verde-claro: #a1e887;
+  --amarelo-ecologico: #f1c40f;
+  --marrom-terra: #7c6b50;
+  --azul-agua: #2ca6cb;
+  --cinza-suave: #f0f4f1;
+}
+
+/* Tela de curiosidades com rolagem */
+#curiosidades {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Imagem informativa */
+#img-coleta {
+  width: 85%;
+  max-width: 300px;
+  border-radius: 12px;
+  margin: 12px 0;
+  border: 2px solid var(--verde-vibrante);
+  object-fit: contain;
+}
+
+/* Textos informativos (menu suspenso) */
+#textos-container {
+  width: 90%;
+  margin-top: 12px;
+  text-align: left;
+}
+
+details {
+  background: #f0f4f1;
+  color: #02391e;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 6px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+details:hover {
+  background: #e0e8e4;
+}
+
+summary {
+  font-weight: bold;
+  color: #016837;
+}
+
+details p {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+.item-detectado {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin: 12px 0;
+  border: 2px solid #2ecc71;
+}
